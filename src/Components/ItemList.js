@@ -1,33 +1,43 @@
-import React from 'react'
-import { List } from '../Api/List'
-import Item from './Item'
+import React from "react";
+import { List } from "../Api/List";
+import Item from "./Item";
 
-function ItemList() {
+const ItemList = () => {
   // ------------------------
-// Inline style for the Item List
+  // Inline style for the Item List
   const ListStyle = {
-    color :"red",
-    display : "flex",
-    justifyContent : "Space between"
-
-  }
+    color: "red",
+    display: "flex",
+    justifyContent: "Space between",
+  };
   // ---------------------------
-  // The default props for my Item component
+  // The default props for Item component
   Item.defaultProps = {
     name: "test",
     image: "test",
-    price: "tets"
-  }
+    price: "100",
+  };
+
+  const alertProduct = (cardName) => {
+    alert(cardName);
+  };
+
   return (
     <>
-    <div style={ListStyle}>
-
-    {List.map(item => <Item />
-  
-    )}
-    </div>
+      <div style={ListStyle}>
+        {List.map((item,key) => (
+          <div key={key} onClick={() => alertProduct(item.name)}>
+            <Item
+              name={item.name}
+              price={item.price}
+              image={item.image}
+            />
+          </div>
+        ))}
+            
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default ItemList
+export default ItemList;

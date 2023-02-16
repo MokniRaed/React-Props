@@ -1,23 +1,29 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import PropTypes from 'prop-types';
 
-function Item(props) {
-    let name = props.name;
-    let image = props.image;
-    let price = props.price;
 
-    
+
+const Item = ({props})=> {
+
+    Item.propTypes = {
+      name: PropTypes.string,
+      image: PropTypes.any,
+      price:  PropTypes.string
+
+    } 
+
   return (
     <>
      <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src={image} />
+      <Card.Img variant="top" src={props.image} />
       <Card.Body>
-        <Card.Title>{name}</Card.Title>
+        <Card.Title>{props.name}</Card.Title>
         <Card.Text>
-        {price} DT
+        {props.price} DT
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <Button   variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
     </>
